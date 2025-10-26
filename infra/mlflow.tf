@@ -44,7 +44,7 @@ resource "kubernetes_deployment_v1" "mlflow" {
           name = "mlflow-pvc"
           host_path {
             path = "/mlflow"
-            type = "Directory"
+            type = "DirectoryOrCreate"
           }
         }
       }
