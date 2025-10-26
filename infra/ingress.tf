@@ -2,11 +2,14 @@ resource "kubernetes_ingress_v1" "mlflow" {
   metadata {
     name = "mlflow"
     namespace = "nanogpt"
+    annotations = {
+      "nginx.ingress.kubernetes.io/rewrite-target": "/"
+    }
   }
   spec {
     ingress_class_name = "nginx"
     rule {
-      host = "personal-mlflow-server.com"
+      host = "mlflow.local"
       http {
         path {
           path = "/"
