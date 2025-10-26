@@ -2,6 +2,9 @@ resource "kubernetes_deployment_v1" "mlflow" {
   metadata {
     name = "mlflow-server"
     namespace = "nanogpt"
+    labels = {
+      "app.kubernetes.io/name": "mlflow-server"
+    }
   }
   spec {
     replicas = "1"
@@ -16,6 +19,7 @@ resource "kubernetes_deployment_v1" "mlflow" {
         namespace = "nanogpt"
         labels = {
           app: "mlflow-server"
+          "app.kubernetes.io/name": "mlflow-server"
         }
       }
       spec {
